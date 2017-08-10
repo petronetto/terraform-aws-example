@@ -10,6 +10,6 @@ variable "aws_region" {
 # Amazon Linux
 variable "aws_amis" {
   default = {
-    eu-west-1 = "ami-a4c7edb2"
+    eu-east-1 = "ami-a4c7edb2"
   }
 }
