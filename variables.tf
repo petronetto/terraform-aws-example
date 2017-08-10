@@ -1,5 +1,6 @@
 variable "key_name" {
   description = "Desired name of AWS key pair"
+  default     = "curso_cloud"
 }
 
 variable "aws_region" {
