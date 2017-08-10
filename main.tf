@@ -132,6 +132,6 @@ resource "aws_instance" "web" {
   # In this case, we just install nginx and start it. By default,
   # this should be on port 80
   provisioner "local-exec" {
-    command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --become -u ec2-user --private-key ~/Downloads/curso_cloud.pem todo.yml"
+    command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --become -u ec2-user --private-key ~/Downloads/${var.key_name}.pem todo.yml"
   }
 }
