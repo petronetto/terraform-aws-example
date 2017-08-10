@@ -1,0 +1,21 @@
+- hosts: tag_Name_todo_webserver
+  vars:
+    user: 
+    key: 
+  tasks:
+    - name: Instalando pacotes
+      yum: name="{{ item }}" state=present
+      become: yes
+      with_items:
+        - epel-release
+        - git
+        - nginx
+    - name: Clonando repositorio
+      git: repo=https://github.com/tastejs/todomvc.git dest=/tmp/todomvc
+      become: yes
+    - name: Linkar aplicacao ao nginx
+      file: src=/tmp/todomvc/examples/angular2 dest=/usr/share/nginx/html/todo owner=nginx group=nginx state=link
+      become: yes
+    - name: Habilitar e executar nginx
+      service: name=nginx enabled=yes state=started
+      become: yes
